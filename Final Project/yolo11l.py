@@ -1,10 +1,9 @@
 import cv2
 from ultralytics import YOLO
 
-model = YOLO("yolo11s.pt")
+model = YOLO("yolo11l.pt")
 
-video_path = "cctv1.mp4"
-# video_path = "cctv2.mp4"
+video_path = "cctv1.mp4" 
 cap = cv2.VideoCapture(video_path)
 
 roi_top_left = (0, 0)
@@ -15,7 +14,7 @@ while cap.isOpened():
     if not ret:
         break
 
-    results = model(frame, verbose=False)
+    results = model(frame)
     person_count = 0
 
     cv2.rectangle(frame, roi_top_left, roi_bottom_right, (255, 0, 0), 2)
